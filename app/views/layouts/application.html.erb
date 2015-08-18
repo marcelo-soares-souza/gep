@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gep</title>
+  <title>GEP - Gestão de Equipamentos e Pessoas</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<%= nav_bar brand: 'GEP', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item "Início" %>
+    <% end %>
+<% end %>
 
 <%= yield %>
 
