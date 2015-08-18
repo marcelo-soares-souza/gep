@@ -1,0 +1,11 @@
+<%= nav_bar brand: 'GEP', responsive: true do %>
+    <%= menu_group do %>
+        <%= menu_item 'Início', root_path %>
+      <% if user_signed_in? then %>
+        <%= menu_item 'Deslogar', destroy_user_session_path %>
+      <% else %>
+        <%= menu_item 'Logar', new_user_session_path %>
+      <% end %>
+    <% end %>
+<% end %>
+

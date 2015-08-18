@@ -7,14 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= nav_bar brand: 'GEP', responsive: true do %>
-    <%= menu_group do %>
-        <%= menu_item "Início" %>
-    <% end %>
-<% end %>
-
-<%= yield %>
-
+  <%= render 'layouts/menu' %>
+  <div class="container">
+    <%= render 'layouts/messages' %>
+     <%= yield %>
+  </div>
 </body>
 </html>

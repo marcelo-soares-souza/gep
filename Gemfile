@@ -43,6 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
-# Bootstrap
-
+# Bootstrap - Layout
 gem 'twitter-bootstrap-rails'
+
+# Devise - Authentication
+gem 'devise'
