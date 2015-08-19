@@ -1,6 +1,5 @@
 <%= nav_bar brand: "GEP", responsive: true do %>
     <%= menu_group pull: :left do %>
-      <%= menu_item "Início", root_path %>
 
       <% if user_signed_in? then %>
         <%= drop_down "Equipamentos" do %>

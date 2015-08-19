@@ -1,18 +1,16 @@
 <%- model_class = Equipamento -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h3><%= @equipamento.item %></h3>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:item) %>:</strong></dt>
-  <dd><%= @equipamento.item %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:patrimonio) %>:</strong></dt>
+  <dt><strong>Patrimônio:</strong></dt>
   <dd><%= @equipamento.patrimonio %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:numero_serie) %>:</strong></dt>
+  <dt><strong>Número de Série:</strong></dt>
   <dd><%= @equipamento.numero_serie %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:especificacao) %>:</strong></dt>
+  <dt><strong>Especificação:</strong></dt>
   <dd><%= @equipamento.especificacao %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
+  <dt><strong>Observação:</strong></dt>
   <dd><%= @equipamento.observacao %></dd>
 </dl>
 
