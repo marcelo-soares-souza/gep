@@ -1,11 +1,20 @@
-<%= nav_bar brand: 'GEP', responsive: true do %>
-    <%= menu_group do %>
-        <%= menu_item 'Início', root_path %>
+<%= nav_bar brand: "GEP", responsive: true do %>
+    <%= menu_group pull: :left do %>
+      <%= menu_item "Início", root_path %>
+
+      <% if user_signed_in? then %>
+        <%= drop_down "Equipamentos" do %>
+           <%= menu_item "Listar", equipamentos_path %>
+           <%= menu_item "Adicionar", new_equipamento_path %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
       <% if user_signed_in? then %>
         <%= menu_item "Deslogar (#{current_user.nome})", destroy_user_session_path %>
       <% else %>
-        <%= menu_item 'Logar', new_user_session_path %>
+        <%= menu_item "Logar", new_user_session_path %>
       <% end %>
-    <% end %>
+  <% end %>
 <% end %>
-

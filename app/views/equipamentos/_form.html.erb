@@ -1,0 +1,59 @@
+<%= form_for @equipamento, :html => { :class => "form-horizontal equipamento" } do |f| %>
+
+    <% if @equipamento.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@equipamento.errors.count, "error") %> prohibited this equipamento from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @equipamento.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :item, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :item, :class => 'form-control' %>
+    </div>
+    <%= error_span(@equipamento[:item]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :patrimonio, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :patrimonio, :class => 'form-control' %>
+    </div>
+    <%= error_span(@equipamento[:patrimonio]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :numero_serie, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :numero_serie, :class => 'form-control' %>
+    </div>
+    <%= error_span(@equipamento[:numero_serie]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :especificacao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :especificacao, :class => 'form-control' %>
+    </div>
+    <%= error_span(@equipamento[:especificacao]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :observacao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :observacao, :class => 'form-control' %>
+    </div>
+    <%= error_span(@equipamento[:observacao]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            equipamentos_path, :class => 'btn btn-default' %>
+
+<% end %>
