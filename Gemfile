@@ -48,3 +48,6 @@ gem 'twitter-bootstrap-rails'
 
 # Devise - Authentication
 gem 'devise'
+
+# Validar CPF
+gem 'cpf_validator'

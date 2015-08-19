@@ -49,6 +49,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    cpf_validator (0.2.1)
+      activemodel (>= 3.0)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -165,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  cpf_validator
   devise
   jbuilder (~> 2.0)
   jquery-rails

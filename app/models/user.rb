@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :nome, :presence => true
-  validates :cpf, :presence => true
+  validates :cpf, :presence => true, :cpf => true
 end

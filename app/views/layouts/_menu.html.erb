@@ -4,8 +4,7 @@
 
       <% if user_signed_in? then %>
         <%= drop_down "Equipamentos" do %>
-           <%= menu_item "Listar", equipamentos_path %>
-           <%= menu_item "Adicionar", new_equipamento_path %>
+           <%= menu_item "Administrar", equipamentos_path %>
         <% end %>
       <% end %>
     <% end %>
