@@ -13,10 +13,10 @@ pt-BR:
       cancel: "Cancelar"
       confirm: "Tem certeza?"
       destroy: "Apagar"
-      new: "Novo(a)"
+      new: "Adicionar"
       edit: "Editar"
     titles:
       edit: "Editar %{model}"
       save: "Salvar %{model}"
-      new: "Novo %{model}"
+      new: "Adicionar %{model}"
       delete: "Apagar %{model}"

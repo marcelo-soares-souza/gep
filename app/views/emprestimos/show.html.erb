@@ -1,21 +1,22 @@
 <%- model_class = Emprestimo -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dt><strong>Usuário:</strong></dt>
   <dd><%= @emprestimo.user.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:equipamento_id) %>:</strong></dt>
+  <dt><strong>Equipamento:</strong></dt>
   <dd><%= @emprestimo.equipamento.item %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:data_inicio) %>:</strong></dt>
+  <dt><strong>Data Início:</strong></dt>
   <dd><%= I18n.l(@emprestimo.data_inicio) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:data_fim) %>:</strong></dt>
+  <dt><strong>Data Fim:</strong></dt>
   <dd><%= I18n.l(@emprestimo.data_fim) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:situacao) %>:</strong></dt>
+  <dt><strong>Situação:</strong></dt>
   <dd><%= @emprestimo.situacao.humanize %></dd>
 </dl>
 
+<hr/>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               emprestimos_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

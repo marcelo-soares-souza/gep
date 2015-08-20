@@ -1,5 +1,6 @@
 class EmprestimosController < ApplicationController
   before_action :set_emprestimo, only: [:show, :edit, :update, :destroy]
+  before_action :verify_realations_records, only: [ :new ]
 
   # GET /emprestimos
   # GET /emprestimos.json
@@ -28,7 +29,7 @@ class EmprestimosController < ApplicationController
 
     respond_to do |format|
       if @emprestimo.save
-        format.html { redirect_to @emprestimo, notice: 'Emprestimo was successfully created.' }
+        format.html { redirect_to @emprestimo, notice: 'Reserva/Empréstimo foi Adicionado.' }
         format.json { render :show, status: :created, location: @emprestimo }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class EmprestimosController < ApplicationController
   def update
     respond_to do |format|
       if @emprestimo.update(emprestimo_params)
-        format.html { redirect_to @emprestimo, notice: 'Emprestimo was successfully updated.' }
+        format.html { redirect_to @emprestimo, notice: 'Reserva/Empréstimo foi Atualizado.' }
         format.json { render :show, status: :ok, location: @emprestimo }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class EmprestimosController < ApplicationController
   def destroy
     @emprestimo.destroy
     respond_to do |format|
-      format.html { redirect_to emprestimos_url, notice: 'Emprestimo was successfully destroyed.' }
+      format.html { redirect_to emprestimos_url, notice: 'Reserva/Empréstimo Removido.' }
       format.json { head :no_content }
     end
   end
@@ -71,4 +72,8 @@ class EmprestimosController < ApplicationController
     def emprestimo_params
       params.require(:emprestimo).permit(:user_id, :equipamento_id, :data_inicio, :data_fim, :situacao)
     end
+
+    def verify_realations_records
+      redirect_to Emprestimo, notice: "Adicionar pelo menos um Equipamento" if Equipamento.count <= 0
+    end 
 end

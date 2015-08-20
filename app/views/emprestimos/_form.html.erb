@@ -16,14 +16,14 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
+    <%= f.label "Usuário", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :user_id, options_for_select(User.all.collect { |user| [user.nome, user.id] }, selected: @emprestimo.user_id), {} , class: "form-control" %> 
     </div>
     <%= error_span(@emprestimo[:user_id]) %>
   </div>
   <div class="control-group">
-    <%= f.label :equipamento_id, :class => 'control-label' %>
+    <%= f.label "Equipamento", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :equipamento_id, options_for_select(Equipamento.all.collect { |equipamento| [equipamento.item, equipamento.id] }, selected: @emprestimo.equipamento_id), {} , class: "form-control" %> 
     </div>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :data_inicio, :class => 'control-label' %>
+    <%= f.label "Data Início", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :data_inicio, :class => 'form-control', :data => { :provide => 'datepicker' } %>
     </div>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :data_fim, :class => 'control-label' %>
+    <%= f.label "Data Fim", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :data_fim, :class => 'form-control', :data => { :provide => 'datepicker' } %>
     </div>
@@ -47,16 +47,15 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :situacao, :class => 'control-label' %>
+    <%= f.label "Situação", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :situacao, options_for_select(Emprestimo.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @emprestimo.situacao), {} , class: "form-control" %> 
     </div>
     <%= error_span(@emprestimo[:situacao]) %>
   </div>
 
-
+  <br/>
   <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            emprestimos_path, :class => 'btn btn-default' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), emprestimos_path, :class => 'btn btn-default' %>
 
 <% end %>
