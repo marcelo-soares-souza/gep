@@ -1,0 +1,62 @@
+<%= form_for @emprestimo, :html => { :class => "form-horizontal emprestimo" } do |f| %>
+
+    <% if @emprestimo.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@emprestimo.errors.count, "error") %> encontrado(s):</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @emprestimo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :user_id, options_for_select(User.all.collect { |user| [user.nome, user.id] }, selected: @emprestimo.user_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@emprestimo[:user_id]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :equipamento_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :equipamento_id, options_for_select(Equipamento.all.collect { |equipamento| [equipamento.item, equipamento.id] }, selected: @emprestimo.equipamento_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@emprestimo[:equipamento_id]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :data_inicio, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_inicio, :class => 'form-control', :data => { :provide => 'datepicker' } %>
+    </div>
+    <%= error_span(@emprestimo[:data_inicio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :data_fim, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_fim, :class => 'form-control', :data => { :provide => 'datepicker' } %>
+    </div>
+    <%= error_span(@emprestimo[:data_fim]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :situacao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :situacao, options_for_select(Emprestimo.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @emprestimo.situacao), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@emprestimo[:situacao]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            emprestimos_path, :class => 'btn btn-default' %>
+
+<% end %>

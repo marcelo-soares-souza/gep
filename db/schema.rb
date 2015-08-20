@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819172600) do
+ActiveRecord::Schema.define(version: 20150820190105) do
+
+  create_table "emprestimos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "equipamento_id"
+    t.date     "data_inicio"
+    t.date     "data_fim"
+    t.integer  "situacao"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "emprestimos", ["equipamento_id"], name: "index_emprestimos_on_equipamento_id"
+  add_index "emprestimos", ["user_id"], name: "index_emprestimos_on_user_id"
 
   create_table "equipamentos", force: :cascade do |t|
     t.string   "item"

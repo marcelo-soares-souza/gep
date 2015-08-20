@@ -13,5 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $.fn.datepicker.defaults.format = 'dd/mm/yyyy';
+  $.fn.datepicker.defaults.language = 'pt-BR';
+});

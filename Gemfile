@@ -45,6 +45,7 @@ end
 
 # Bootstrap - Layout
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Devise - Authentication
 gem 'devise'
