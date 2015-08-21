@@ -1,7 +1,7 @@
 class EmprestimosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_emprestimo, only: [:show, :edit, :update, :destroy]
-  before_action :verify_realations_records, only: [ :new ]
+  before_action :verify_realations_records, only: [ :new, :edit ]
 
   # GET /emprestimos
   # GET /emprestimos.json

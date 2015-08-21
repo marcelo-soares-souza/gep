@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   add_breadcrumb :root 
@@ -11,4 +9,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nome, :cpf, :email, :password) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nome, :cpf, :email, :password, :current_password) }
   end  
+
+  def is_admin
+    flash[:error] = "Você não tem Permissão" if ! current_user.admin
+    redirect_to :controller => "welcome", :action => "index" if ! current_user.admin
+  end
 end

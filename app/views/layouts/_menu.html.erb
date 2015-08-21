@@ -2,20 +2,28 @@
     <%= menu_group pull: :left do %>
 
       <% if user_signed_in? then %>
-        <%= drop_down "Equipamentos" do %>
-          <%= menu_item "Administrar", equipamentos_path %>
+        <% if ! current_user.admin? then %>
+          <%= menu_item "Solicitar Equipamento", emprestimos_path %>
         <% end %>
 
-        <%= drop_down "Empréstimos" do %>
-          <%= menu_item "Administrar", emprestimos_path %>
-        <% end %>
+        <% if current_user.admin? then %>
 
-        <%= drop_down "Projetos" do %>
-          <%= menu_item "Administrar", projetos_path %>
-        <% end %>
+          <%= drop_down "Empréstimos" do %>
+            <%= menu_item "Administrar", emprestimos_path %>
+          <% end %>
 
-        <%= drop_down "Usuários" do %>
-          <%= menu_item "Administrar", users_path %>
+          <%= drop_down "Equipamentos" do %>
+            <%= menu_item "Administrar", equipamentos_path %>
+          <% end %>
+
+          <%= drop_down "Projetos" do %>
+            <%= menu_item "Administrar", projetos_path %>
+          <% end %>
+
+          <%= drop_down "Usuários" do %>
+            <%= menu_item "Administrar", users_path %>
+          <% end %>
+
         <% end %>
 
       <% end %>
