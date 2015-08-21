@@ -1,0 +1,46 @@
+<%- model_class = User -%>
+
+<% if ! @users.present? then %>
+
+  <center><h3>Nenhum Usuário Cadastrado. <%= link_to "Cadastre agora", new_user_path %>.</h3></center>
+
+<% else %>
+
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary' %>
+  <hr/>
+
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th> 
+      <th>CPF</th> 
+      <th>E-Mail</th>
+      <th>Cadastrado</th>
+      <th>Administrador</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id, user_path(user) %></td>
+        <td><%= link_to user.nome, user_path(user) %></td>
+        <td><%= user.cpf %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+        <td><%= I18n.t(user.admin.to_s) %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_user_path(user), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      user_path(user),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% end %>

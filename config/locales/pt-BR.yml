@@ -1,5 +1,14 @@
 pt-BR:
+  "true": "Sim"
+  "false": "Não"
   'Log in': 'Logar'
+
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+
   Password: 'Senha'
   date:
     abbr_day_names:
@@ -132,6 +141,9 @@ pt-BR:
         one: 'Não foi possível gravar %{model}: 1 erro'
         other: 'Não foi possível gravar %{model}: %{count} erros.'
   helpers:
+    label:
+      user:
+        remember_me: "Lembrar"
     select:
       prompt: Por favor selecione
     submit:
