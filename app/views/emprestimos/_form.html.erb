@@ -16,14 +16,14 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label "Usuário", :class => 'control-label' %>
+    <%= f.label :user_id, "Usuário", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :user_id, options_for_select(User.all.collect { |user| [user.nome, user.id] }, selected: @emprestimo.user_id), {} , class: "form-control" %> 
     </div>
     <%= error_span(@emprestimo[:user_id]) %>
   </div>
   <div class="control-group">
-    <%= f.label "Equipamento", :class => 'control-label' %>
+    <%= f.label :equipamento_id, "Equipamento", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :equipamento_id, options_for_select(Equipamento.all.collect { |equipamento| [equipamento.item, equipamento.id] }, selected: @emprestimo.equipamento_id), {} , class: "form-control" %> 
     </div>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label "Data Início", :class => 'control-label' %>
+    <%= f.label :data_inicio, "Data de Início", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :data_inicio, :class => 'form-control', :data => { :provide => 'datepicker' } %>
     </div>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label "Data Fim", :class => 'control-label' %>
+    <%= f.label :data_fim, "Data de Fim", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :data_fim, :class => 'form-control', :data => { :provide => 'datepicker' } %>
     </div>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label "Situação", :class => 'control-label' %>
+    <%= f.label :situacao, "Situação", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :situacao, options_for_select(Emprestimo.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @emprestimo.situacao), {} , class: "form-control" %> 
     </div>

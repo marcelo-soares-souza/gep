@@ -1,0 +1,48 @@
+<%- model_class = Equipe -%>
+
+<% if ! @equipes.present? then %>
+
+  <center><h3>Nenhuma Reserva Cadastrada. <%= link_to "Cadastre agora", new_equipe_path %>.</h3></center>
+
+<% else %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")), new_equipe_path, :class => 'btn btn-primary' %>
+
+<hr/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Projeto</th>
+      <th>Usuário</th>
+      <th><%= model_class.human_attribute_name(:data_inicio) %></th>
+      <th><%= model_class.human_attribute_name(:data_fim) %></th>
+      <th><%= model_class.human_attribute_name(:situacao) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @equipes.each do |equipe| %>
+      <tr>
+        <td><%= link_to equipe.id, equipe_path(equipe) %></td>
+        <td><%= link_to equipe.projeto.titulo, equipe_path(equipe) %></td>
+        <td><%= equipe.user.nome %></td>
+        <td><%= equipe.data_inicio %></td>
+        <td><%= equipe.data_fim %></td>
+        <td><%= equipe.situacao.humanize %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_equipe_path(equipe), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      equipe_path(equipe),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

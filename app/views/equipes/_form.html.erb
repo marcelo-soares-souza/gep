@@ -1,0 +1,62 @@
+<%= form_for @equipe, :html => { :class => "form-horizontal equipe" } do |f| %>
+
+    <% if @equipe.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@equipe.errors.count, "error") %> encontrado(s):</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @equipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "Usuário", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :user_id, options_for_select(User.all.collect { |user| [user.nome, user.id] }, selected: @equipe.user_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@equipe[:user_id]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Projeto", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :projeto_id, options_for_select(Projeto.all.collect { |projeto| [projeto.titulo, projeto.id] }, selected: @equipe.projeto_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@equipe[:projeto_id]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Data Início", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_inicio, :class => 'form-control', :data => { :provide => 'datepicker' } %>
+    </div>
+    <%= error_span(@equipe[:data_inicio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Data Fim", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_fim, :class => 'form-control', :data => { :provide => 'datepicker' } %>
+    </div>
+    <%= error_span(@equipe[:data_fim]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Situação", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :situacao, options_for_select(Equipe.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @equipe.situacao), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@equipe[:situacao]) %>
+  </div>
+
+  <br/>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), equipes_path, :class => 'btn btn-default' %>
+
+<% end %>

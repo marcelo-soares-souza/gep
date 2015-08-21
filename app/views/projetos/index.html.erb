@@ -15,8 +15,9 @@
     <tr>
       <th>#</th>
       <th>Titulo</th>
-      <th><%= model_class.human_attribute_name(:data_inicio) %></th>
-      <th><%= model_class.human_attribute_name(:data_fim) %></th>
+      <th>Data de Início</th>
+      <th>Data de Fim</th>
+      <th>Participantes</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
         <td><%= link_to projeto.titulo, projeto_path(projeto) %></td>
         <td><%= projeto.data_inicio %></td>
         <td><%= projeto.data_fim %></td>
+        <td><%= projeto.users.count %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_projeto_path(projeto), :class => 'btn btn-default btn-xs' %>

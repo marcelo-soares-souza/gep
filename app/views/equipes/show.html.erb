@@ -1,0 +1,28 @@
+<%- model_class = Equipe -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Usuário:</strong></dt>
+  <dd><%= @equipe.user.nome %></dd>
+  <dt><strong>Projeto:</strong></dt>
+  <dd><%= @equipe.projeto.titulo %></dd>
+  <dt><strong>Data Início:</strong></dt>
+  <dd><%= I18n.l(@equipe.data_inicio) %></dd>
+  <dt><strong>Data Fim:</strong></dt>
+  <dd><%= I18n.l(@equipe.data_fim) %></dd>
+  <dt><strong>Situação:</strong></dt>
+  <dd><%= @equipe.situacao.humanize %></dd>
+</dl>
+
+<hr/>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              equipes_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_equipe_path(@equipe), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              equipe_path(@equipe),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

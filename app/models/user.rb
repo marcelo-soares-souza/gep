@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, uniqueness: true
   validates :cpf, :presence => true, :cpf => true, uniqueness: true
   validates :nome, :presence => true
+
+  has_many :equipes
+  has_many :projetos, through: :equipes
 end
