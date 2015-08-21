@@ -6,6 +6,6 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
-.btn-primary:visited { 
+.btn-primary:visited, .btn-danger:visited { 
   color: #fff;
 }

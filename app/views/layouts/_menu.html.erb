@@ -3,13 +3,19 @@
 
       <% if user_signed_in? then %>
         <%= drop_down "Equipamentos" do %>
-           <%= menu_item "Administrar", equipamentos_path %>
+          <%= menu_item "Administrar", equipamentos_path %>
         <% end %>
 
         <%= drop_down "Empréstimos" do %>
-           <%= menu_item "Administrar", emprestimos_path %>
+          <%= menu_item "Administrar", emprestimos_path %>
         <% end %>
+
+        <%= drop_down "Projetos" do %>
+          <%= menu_item "Administrar", projetos_path %>
+        <% end %>
+
       <% end %>
+
     <% end %>
 
     <%= menu_group pull: :right do %>

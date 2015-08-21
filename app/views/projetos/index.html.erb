@@ -1,0 +1,44 @@
+<%- model_class = Projeto -%>
+
+<% if ! @projetos.present? then %>
+
+  <center><h3>Nenhum Projeto Cadastrado. <%= link_to "Cadastre agora", new_projeto_path %>.</h3></center>
+
+<% else %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")), new_projeto_path, :class => 'btn btn-primary' %>
+
+<hr/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titulo</th>
+      <th><%= model_class.human_attribute_name(:data_inicio) %></th>
+      <th><%= model_class.human_attribute_name(:data_fim) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projetos.each do |projeto| %>
+      <tr>
+        <td><%= link_to projeto.id, projeto_path(projeto) %></td>
+        <td><%= link_to projeto.titulo, projeto_path(projeto) %></td>
+        <td><%= projeto.data_inicio %></td>
+        <td><%= projeto.data_fim %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_projeto_path(projeto), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      projeto_path(projeto),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

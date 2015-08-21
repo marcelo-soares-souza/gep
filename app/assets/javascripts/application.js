@@ -21,4 +21,5 @@
 $(document).ready(function(){
   $.fn.datepicker.defaults.format = 'dd/mm/yyyy';
   $.fn.datepicker.defaults.language = 'pt-BR';
+  $.fn.datepicker.defaults.orientation = 'top auto';
 });

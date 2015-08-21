@@ -1,0 +1,46 @@
+<%= form_for @projeto, :html => { :class => "form-horizontal projeto" } do |f| %>
+
+    <% if @projeto.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@projeto.errors.count, "error") %> encontrado(s):</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @projeto.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "Título", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :titulo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:titulo]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Data Início", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_inicio, :class => 'form-control', :data => { :provide => 'datepicker' } %>
+    </div>
+    <%= error_span(@projeto[:data_inicio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Data Fim", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_fim, :class => 'form-control', :data => { :provide => 'datepicker' } %>
+    </div>
+    <%= error_span(@projeto[:data_fim]) %>
+  </div>
+
+  <br/>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), projetos_path, :class => 'btn btn-default' %>
+
+<% end %>
