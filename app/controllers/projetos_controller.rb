@@ -30,7 +30,7 @@ class ProjetosController < ApplicationController
 
     respond_to do |format|
       if @projeto.save
-        format.html { redirect_to @projeto, notice: 'Projeto was successfully created.' }
+        format.html { redirect_to @projeto, notice: 'Projeto foi Adicionado.' }
         format.json { render :show, status: :created, location: @projeto }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class ProjetosController < ApplicationController
   def update
     respond_to do |format|
       if @projeto.update(projeto_params)
-        format.html { redirect_to @projeto, notice: 'Projeto was successfully updated.' }
+        format.html { redirect_to @projeto, notice: 'Projeto foi Atualizado.' }
         format.json { render :show, status: :ok, location: @projeto }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class ProjetosController < ApplicationController
   def destroy
     @projeto.destroy
     respond_to do |format|
-      format.html { redirect_to projetos_url, notice: 'Projeto was successfully destroyed.' }
+      format.html { redirect_to projetos_url, notice: 'Projeto removido.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class ProjetosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def projeto_params
-      params.require(:projeto).permit(:email, :password, :nome, :cpf)
+      params.require(:projeto).permit(:titulo, :data_inicio, :data_fim)
     end
 end

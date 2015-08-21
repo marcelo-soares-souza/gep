@@ -2,10 +2,10 @@ class Emprestimo < ActiveRecord::Base
   belongs_to :user
   belongs_to :equipamento
 
+  enum situacao: [ :reservado, :emprestado ]
+
   validates_presence_of :data_inicio, :data_fim
   validate :fim_apos_inicio
-
-  enum situacao: [ :reservado, :emprestado ]
 
   private
 
@@ -13,7 +13,8 @@ class Emprestimo < ActiveRecord::Base
     return if data_fim.blank? || data_inicio.blank?
 
     if data_fim < data_inicio
-      errors.add(:data_fim, " não pode ser antes da Data Início")
-    end 
+      errors.add(:data_fim, " não pode ser antes da Data de Início")
+    end
   end
+
 end
