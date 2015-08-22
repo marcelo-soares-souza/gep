@@ -1,7 +1,7 @@
 class EquipesController < ApplicationController
   before_action :set_equipe, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :verify_realations_records, only: [ :new, :edit ]
+  before_action :verify_relations_records, only: [ :new, :edit ]
   before_action :is_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /equipes
@@ -75,7 +75,7 @@ class EquipesController < ApplicationController
       params.require(:equipe).permit(:user_id, :projeto_id, :data_inicio, :data_fim, :situacao)
     end
 
-    def verify_realations_records
+    def verify_relations_records
       redirect_to Projeto, notice: "Adicionar pelo menos um Projeto" if Projeto.count <= 0
     end 
 

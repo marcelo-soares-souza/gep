@@ -1,7 +1,7 @@
 class EmprestimosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_emprestimo, only: [:show, :edit, :update, :destroy]
-  before_action :verify_realations_records, only: [ :new, :edit ]
+  before_action :verify_relations_records, only: [ :new, :edit ]
 
   # GET /emprestimos
   # GET /emprestimos.json
@@ -78,7 +78,7 @@ class EmprestimosController < ApplicationController
       params.require(:emprestimo).permit(:user_id, :equipamento_id, :data_inicio, :data_fim, :situacao)
     end
 
-    def verify_realations_records
+    def verify_relations_records
       redirect_to Emprestimo, notice: "Adicionar pelo menos um Equipamento" if Equipamento.count <= 0
     end 
 end

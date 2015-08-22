@@ -1,5 +1,28 @@
 class PontosController < ApplicationController
   before_action :set_ponto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :is_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+
+  # GET /pontos/registrar
+  # GET /pontos/registrar.json
+  def registrar
+    @ponto = Ponto.where("user_id = #{current_user.id}").order("created_at").last
+  end
+
+  def entrada_saida
+    @last_ponto = Ponto.where("user_id = #{current_user.id}").order("created_at").last
+
+    @ponto = Ponto.new
+    @ponto.user_id = current_user.id
+    @ponto.data_hora = DateTime.now
+    @ponto.situacao = "Entrada"
+    @ponto.situacao = "Saída" if @last_ponto.situacao.humanize == 'Entrada' if @last_ponto.present?
+
+    @ponto.save
+
+    flash[:notice] = "#{@ponto.situacao} Registrado em #{@ponto.data_hora}"
+    redirect_to :controller => "pontos", :action => "registrar"
+  end
 
   # GET /pontos
   # GET /pontos.json
