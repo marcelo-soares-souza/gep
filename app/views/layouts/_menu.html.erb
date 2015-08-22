@@ -3,6 +3,7 @@
 
       <% if user_signed_in? then %>
         <% if ! current_user.admin? then %>
+          <%= menu_item "Registrar Ponto", registrar_pontos_path %>
           <%= menu_item "Solicitar Equipamento", emprestimos_path %>
         <% end %>
 

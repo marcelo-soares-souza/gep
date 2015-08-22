@@ -6,6 +6,7 @@ class PontosController < ApplicationController
   # GET /pontos/registrar
   # GET /pontos/registrar.json
   def registrar
+    @pontos = Ponto.where("user_id = #{current_user.id}").order("created_at desc").limit(30)
     @ponto = Ponto.where("user_id = #{current_user.id}").order("created_at").last
   end
 
@@ -17,7 +18,7 @@ class PontosController < ApplicationController
     @ponto.data_hora = DateTime.now
     @ponto.situacao = "Entrada"
     @ponto.situacao = "Saída" if @last_ponto.situacao.humanize == 'Entrada' if @last_ponto.present?
-
+    
     @ponto.save
 
     flash[:notice] = "#{@ponto.situacao} Registrado em #{@ponto.data_hora}"
