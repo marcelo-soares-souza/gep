@@ -5,6 +5,10 @@ class Emprestimo < ActiveRecord::Base
   enum situacao: [ "Reservado", "Emprestado" ]
 
   validates_presence_of :data_inicio, :data_fim
+  validates :data_inicio, :data_fim, :overlap => { :scope => "equipamento_id",
+                                                   :message_title => "Já Reservado/Emprestado.",
+                                                   :message_content => "Esse equipamento já foi Reservado/Emprestado neste Período"
+                                                 }
   validate :fim_apos_inicio
 
   private
@@ -16,5 +20,4 @@ class Emprestimo < ActiveRecord::Base
       errors.add(:data_fim, " não pode ser antes da Data de Início")
     end
   end
-
 end

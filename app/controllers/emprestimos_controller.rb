@@ -6,7 +6,11 @@ class EmprestimosController < ApplicationController
   # GET /emprestimos
   # GET /emprestimos.json
   def index
-    @emprestimos = Emprestimo.all
+    if current_user.admin
+      @emprestimos = Emprestimo.all
+    else
+      @emprestimos = Emprestimo.where("user_id = #{current_user.id}")
+    end
   end
 
   # GET /emprestimos/1

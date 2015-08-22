@@ -52,3 +52,6 @@ gem 'devise'
 
 # Validar CPF
 gem 'cpf_validator'
+
+# Verify Date Overlaps
+gem 'validates_overlap'

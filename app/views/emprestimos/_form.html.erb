@@ -15,13 +15,18 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :user_id, "Usuário", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :user_id, options_for_select(User.all.collect { |user| [user.nome, user.id] }, selected: @emprestimo.user_id), {} , class: "form-control" %> 
+  <% if current_user.admin? %>
+    <div class="control-group">
+      <%= f.label :user_id, "Usuário", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :user_id, options_for_select(User.all.collect{ |user| [user.nome, user.id] }, selected: @emprestimo.user_id), {} , class: "form-control" %> 
+      </div>
+      <%= error_span(@emprestimo[:user_id]) %>
     </div>
-    <%= error_span(@emprestimo[:user_id]) %>
-  </div>
+  <% else %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+
   <div class="control-group">
     <%= f.label :equipamento_id, "Equipamento", :class => 'control-label' %>
     <div class="controls">
@@ -46,13 +51,18 @@
     <%= error_span(@emprestimo[:data_fim]) %>
   </div>
 
-  <div class="control-group">
-    <%= f.label :situacao, "Situação", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :situacao, options_for_select(Emprestimo.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @emprestimo.situacao), {} , class: "form-control" %> 
+  <% if current_user.admin? %>
+    <div class="control-group">
+      <%= f.label :situacao, "Situação", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :situacao, options_for_select(Emprestimo.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @emprestimo.situacao), {} , class: "form-control" %> 
+      </div>
+      <%= error_span(@emprestimo[:situacao]) %>
     </div>
-    <%= error_span(@emprestimo[:situacao]) %>
-  </div>
+
+  <% else %>
+    <%= f.hidden_field :situacao, :value => "Reservado" %>
+  <% end %>
 
   <br/>
   <%= f.submit nil, :class => 'btn btn-primary' %>

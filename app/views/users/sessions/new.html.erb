@@ -1,11 +1,11 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    E-Mail<br />
+    <b>E-Mail</b><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= I18n.t('Password') %><br />
+    <b><%= I18n.t('Password') %></b><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -17,7 +17,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit I18n.t("Log in") %>
+    <%= f.submit I18n.t("Log in"), :class => 'btn btn-primary' %>
   </div>
 <% end %>
 
