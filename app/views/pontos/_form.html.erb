@@ -1,0 +1,51 @@
+<%= form_for @ponto, :html => { :class => "form-horizontal ponto" } do |f| %>
+
+    <% if @ponto.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@ponto.errors.count, "error") %> encontrado(s):</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @ponto.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :user_id, "Usuário", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :user_id, options_for_select(User.all.collect{ |user| [user.nome, user.id] }, selected: @ponto.user_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@ponto[:user_id]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :data_hora, "Data e Hora", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_hora, :class => 'form-control', :value => DateTime.now %>
+    </div>
+    <%= error_span(@ponto[:data_hora]) %>
+  </div>
+
+  <% if current_user.admin? %>
+    <div class="control-group">
+      <%= f.label :situacao, "Situação", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :situacao, options_for_select(Ponto.situacaos.collect { |s| [s[0].humanize, s[0]] }, selected: @ponto.situacao), {} , class: "form-control" %> 
+      </div>
+      <%= error_span(@ponto[:situacao]) %>
+    </div>
+
+  <% else %>
+    <%= f.hidden_field :situacao, :value => "Reservado" %>
+  <% end %>
+
+  <br/>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), pontos_path, :class => 'btn btn-default' %>
+
+<% end %>

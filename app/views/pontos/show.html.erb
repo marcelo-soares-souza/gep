@@ -1,0 +1,24 @@
+<%- model_class = Ponto -%>
+<div class="page-header">
+  <h3><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Usuário:</strong></dt>
+  <dd><%= @ponto.user.nome %></dd>
+  <dt><strong>Data e Hora:</strong></dt>
+  <dd><%= I18n.l(@ponto.data_hora) %></dd>
+  <dt><strong>Situação:</strong></dt>
+  <dd><%= @ponto.situacao.humanize %></dd>
+</dl>
+
+<hr/>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              pontos_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ponto_path(@ponto), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ponto_path(@ponto),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

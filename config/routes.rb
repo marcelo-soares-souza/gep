@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pontos
   resources :equipes
   resources :projetos
   resources :emprestimos

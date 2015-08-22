@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  data_hora: 2015-08-22 17:24:21
+  situacao: 1
+
+two:
+  user_id: 
+  data_hora: 2015-08-22 17:24:21
+  situacao: 1
