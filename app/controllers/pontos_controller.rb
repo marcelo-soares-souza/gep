@@ -6,7 +6,21 @@ class PontosController < ApplicationController
   # GET /pontos/registrar
   # GET /pontos/registrar.json
   def registrar
-    @pontos = Ponto.where("user_id = #{current_user.id}").order("created_at desc").limit(30)
+    @pontos = Ponto.where("user_id = ?", current_user.id)
+                   .by_month(Time.now.strftime("%B"), field: :created_at)
+                   .order("created_at asc")
+
+    @segundos = 0
+
+    @pontos.each do |p| 
+      if p.situacao == "Entrada"
+        @entrada = p.data_hora
+      else
+        @saida = p.data_hora
+        @segundos += TimeDifference.between(@entrada, @saida).in_seconds.to_i if (@entrada && @saida )
+      end
+    end
+
     @ponto = Ponto.where("user_id = #{current_user.id}").order("created_at").last
   end
 
@@ -18,7 +32,7 @@ class PontosController < ApplicationController
     @ponto.data_hora = DateTime.now
     @ponto.situacao = "Entrada"
     @ponto.situacao = "Saída" if @last_ponto.situacao.humanize == 'Entrada' if @last_ponto.present?
-    
+
     @ponto.save
 
     flash[:notice] = "#{@ponto.situacao} Registrado em #{@ponto.data_hora}"

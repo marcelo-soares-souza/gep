@@ -8,8 +8,9 @@
     <br/>
     <h2><%= link_to "Registrar Ponto de " + (@ponto.situacao.humanize != "Entrada" ? "Entrada" : "Saída"), entrada_saida_pontos_path %></h2>
   </center>
-
 <br/>
+<hr/>
+<b>Total Trabalhado neste mês: <%= (@segundos/3600).to_i.to_s.rjust(2,'0') + ":"+Time.at(@segundos).utc.strftime("%M:%S") %> </b>
 <hr/>
 
 <table class="table table-striped">
