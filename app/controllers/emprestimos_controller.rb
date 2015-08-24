@@ -62,7 +62,7 @@ class EmprestimosController < ApplicationController
   def destroy
     @emprestimo.destroy
     respond_to do |format|
-      format.html { redirect_to emprestimos_url, notice: 'Reserva/Empréstimo Removido.' }
+      format.html { redirect_to emprestimos_url, notice: 'Reserva/Empréstimo foi Removido.' }
       format.json { head :no_content }
     end
   end
@@ -79,6 +79,6 @@ class EmprestimosController < ApplicationController
     end
 
     def verify_relations_records
-      redirect_to Emprestimo, notice: "Adicionar pelo menos um Equipamento" if Equipamento.count <= 0
+      redirect_to Emprestimo, notice: "Adicione pelo menos um Equipamento" if Equipamento.count <= 0
     end 
 end

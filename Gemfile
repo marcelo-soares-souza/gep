@@ -58,3 +58,6 @@ gem 'validates_overlap'
 
 # Time Difference
 gem 'time_difference'
+
+# Attachments
+gem 'paperclip'

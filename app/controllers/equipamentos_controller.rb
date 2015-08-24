@@ -58,7 +58,7 @@ class EquipamentosController < ApplicationController
   def destroy
     @equipamento.destroy
     respond_to do |format|
-      format.html { redirect_to equipamentos_url, notice: 'Equipamento Removido.' }
+      format.html { redirect_to equipamentos_url, notice: 'Equipamento foi Removido.' }
       format.json { head :no_content }
     end
   end

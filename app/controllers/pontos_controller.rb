@@ -1,6 +1,6 @@
 class PontosController < ApplicationController
-  before_action :set_ponto, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_ponto, only: [:show, :edit, :update, :destroy]
   before_action :is_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /pontos/registrar
@@ -52,7 +52,7 @@ class PontosController < ApplicationController
 
     respond_to do |format|
       if @ponto.save
-        format.html { redirect_to @ponto, notice: 'Ponto was successfully created.' }
+        format.html { redirect_to @ponto, notice: 'Ponto foi Adicionado.' }
         format.json { render :show, status: :created, location: @ponto }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class PontosController < ApplicationController
   def update
     respond_to do |format|
       if @ponto.update(ponto_params)
-        format.html { redirect_to @ponto, notice: 'Ponto was successfully updated.' }
+        format.html { redirect_to @ponto, notice: 'Ponto foi Atualizado.' }
         format.json { render :show, status: :ok, location: @ponto }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class PontosController < ApplicationController
   def destroy
     @ponto.destroy
     respond_to do |format|
-      format.html { redirect_to pontos_url, notice: 'Ponto was successfully destroyed.' }
+      format.html { redirect_to pontos_url, notice: 'Ponto foi Removido.' }
       format.json { head :no_content }
     end
   end

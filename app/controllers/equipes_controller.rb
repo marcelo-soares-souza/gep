@@ -1,6 +1,6 @@
 class EquipesController < ApplicationController
-  before_action :set_equipe, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_equipe, only: [:show, :edit, :update, :destroy]
   before_action :verify_relations_records, only: [ :new, :edit ]
   before_action :is_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
@@ -31,7 +31,7 @@ class EquipesController < ApplicationController
 
     respond_to do |format|
       if @equipe.save
-        format.html { redirect_to @equipe, notice: 'Equipe was successfully created.' }
+        format.html { redirect_to @equipe, notice: 'Equipe foi Adicionada.' }
         format.json { render :show, status: :created, location: @equipe }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class EquipesController < ApplicationController
   def update
     respond_to do |format|
       if @equipe.update(equipe_params)
-        format.html { redirect_to @equipe, notice: 'Equipe was successfully updated.' }
+        format.html { redirect_to @equipe, notice: 'Equipe foi Atualizada.' }
         format.json { render :show, status: :ok, location: @equipe }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class EquipesController < ApplicationController
   def destroy
     @equipe.destroy
     respond_to do |format|
-      format.html { redirect_to equipes_url, notice: 'Equipe was successfully destroyed.' }
+      format.html { redirect_to equipes_url, notice: 'Equipe foi Removida.' }
       format.json { head :no_content }
     end
   end
@@ -76,7 +76,7 @@ class EquipesController < ApplicationController
     end
 
     def verify_relations_records
-      redirect_to Projeto, notice: "Adicionar pelo menos um Projeto" if Projeto.count <= 0
+      redirect_to Projeto, notice: "Adicione pelo menos um Projeto" if Projeto.count <= 0
     end 
 
 end

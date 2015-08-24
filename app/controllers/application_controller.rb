@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  add_breadcrumb :root 
-
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
@@ -11,7 +9,7 @@ class ApplicationController < ActionController::Base
   end  
 
   def is_admin
-    flash[:error] = "Você não tem Permissão" if ! current_user.admin
+    flash[:error] = "Você não possui Permissão." if ! current_user.admin
     redirect_to :controller => "welcome", :action => "index" if ! current_user.admin
   end
 end
