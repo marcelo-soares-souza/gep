@@ -2,11 +2,11 @@
 
 <% if ! @emprestimos.present? then %>
 
-  <center><h3>Nenhuma Reserva Cadastrada. <%= link_to "Cadastre agora", new_emprestimo_path %>.</h3></center>
+  <center><h3>Nenhuma Equipamento Reservado/Emprestado. <%= link_to "Reserve Agora", new_emprestimo_path %>.</h3></center>
 
 <% else %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")), new_emprestimo_path, :class => 'btn btn-primary' %>
+<%= link_to "Solicitar", new_emprestimo_path, :class => 'btn btn-primary' %>
 
 <hr/>
 

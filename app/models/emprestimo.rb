@@ -6,8 +6,8 @@ class Emprestimo < ActiveRecord::Base
 
   validates_presence_of :data_inicio, :data_fim
   validates :data_inicio, :data_fim, :overlap => { :scope => "equipamento_id",
-                                                   :message_title => "Já Reservado/Emprestado.",
-                                                   :message_content => "Esse equipamento já foi Reservado/Emprestado neste Período"
+                                                   :message_title => "Indisponível",
+                                                   :message_content => "esse equipamento foi Reservado neste Período"
                                                  }
   validate :fim_apos_inicio
 

@@ -1,12 +1,12 @@
 <%- model_class = Ponto -%>
 
 <% if ! @ponto.present? then %>
-  <center><h3>Nenhum Ponto Registrado. <br/><br/><%= link_to "Registre uma Entrada Agora", entrada_saida_pontos_path %>.</h3></center>
+  <center><h3>Nenhum Ponto Registrado até o momento. <br/><br/><%= link_to "Registre uma Entrada Agora", entrada_saida_pontos_path %>.</h3></center>
 <% else %>
   <center>
-    <h4>Último Ponto (<span style="color: red"><%= @ponto.situacao.humanize %></span>) Registrado em <%= @ponto.data_hora %>.</h4>
+    <h4>Último Ponto (<span style='color: red'><%= @ponto.situacao.humanize %></span>) Registrado em <%= @ponto.data_hora %>.</h4>
     <br/>
-    <h2><%= link_to "Registrar Ponto de " +  (@ponto.situacao.humanize != "Entrada" ? "Entrada" : "Saída"), entrada_saida_pontos_path %></h2>
+    <h2><%= link_to "Registrar Ponto de " + (@ponto.situacao.humanize != "Entrada" ? "Entrada" : "Saída"), entrada_saida_pontos_path %></h2>
   </center>
 
 <br/>
