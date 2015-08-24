@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   resources :equipamentos
 
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      get '/password', :action => 'password'
+    end
+  end
 
   get 'welcome/index'
   root 'welcome#index'

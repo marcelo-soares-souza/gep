@@ -23,6 +23,11 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # GET /users/1/password
+  def password
+    @user = User.find(params[:id])
+  end
+
   # POST /users
   # POST /users.json
   def create
