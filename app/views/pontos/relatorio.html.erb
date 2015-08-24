@@ -1,0 +1,29 @@
+<%- model_class = Ponto -%>
+
+<% if ! @pontos.present? then %>
+
+  <center><h3>Nenhum Ponto Registrado.</h3></center>
+
+<% else %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Total Trabalhado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_por_usuario.each do |users| %>
+      <% users.each do |user, total_trabalhado| %>
+        <tr>
+          <td><%= link_to user.nome %></td>
+          <td><%= total_trabalhado %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+

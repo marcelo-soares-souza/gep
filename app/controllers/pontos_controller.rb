@@ -21,6 +21,7 @@ class PontosController < ApplicationController
       end
     end
 
+    @tempo_total = (@segundos/3600).to_i.to_s.rjust(2,'0') + ":"+Time.at(@segundos).utc.strftime("%M:%S")
     @ponto = Ponto.where("user_id = #{current_user.id}").order("created_at").last
   end
 
@@ -37,6 +38,32 @@ class PontosController < ApplicationController
 
     flash[:notice] = "#{@ponto.situacao} Registrado em #{@ponto.data_hora}"
     redirect_to :controller => "pontos", :action => "registrar"
+  end
+
+  # GET /pontos/relatorio
+  # GET /pontos/relatorio.json
+  def relatorio
+    @users = User.all
+    @total_por_usuario = []
+
+    @users.each do |user| 
+      @pontos = Ponto.where("user_id = ?", user.id)
+                     .by_month(Time.now.strftime("%B"), field: :created_at)
+                     .order("created_at asc")
+
+      @segundos = 0
+
+      @pontos.each do |ponto|
+        if ponto.situacao == "Entrada"
+          @entrada = ponto.data_hora
+        else
+          @saida = ponto.data_hora
+          @segundos += TimeDifference.between(@entrada, @saida).in_seconds.to_i if (@entrada && @saida )
+        end
+      end
+
+      @total_por_usuario.push ({user => (@segundos/3600).to_i.to_s.rjust(2,'0') + ":"+Time.at(@segundos).utc.strftime("%M:%S") })
+    end
   end
 
   # GET /pontos

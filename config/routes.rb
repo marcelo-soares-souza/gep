@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :pontos do
     collection do
+      get 'relatorio'
       get 'registrar'
       get 'entrada_saida'
     end
