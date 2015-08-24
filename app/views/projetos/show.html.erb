@@ -10,6 +10,12 @@
   <dd><%= I18n.l(@projeto.data_inicio) %></dd>
   <dt><strong>Data Fim:</strong></dt>
   <dd><%= I18n.l(@projeto.data_fim) %></dd>
+  <% if @projeto.equipes.present? %>
+    <dt>Participantes:</dt>
+    <dd>
+      <%= @projeto.equipes.collect{|equipe| equipe.user.nome}.to_sentence %>
+    </dd>
+  <% end %>
 </dl>
 
 <hr/>

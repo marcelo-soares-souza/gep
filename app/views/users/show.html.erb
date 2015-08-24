@@ -10,6 +10,13 @@
   <dd><%= @user.email %></dd>
   <dt><strong>Administrador:</strong></dt>
   <dd><%= I18n.t(@user.admin.to_s) %></dd>
+  <% if @user.equipes.present? %>
+    <dt>Projetos:</dt>
+    <dd>
+      <%= @user.equipes.collect{|equipe| equipe.projeto.titulo}.to_sentence %>
+    </dd>
+  <% end %>
+
 </dl>
 
 <hr/>
