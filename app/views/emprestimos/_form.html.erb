@@ -31,7 +31,7 @@
     <%= f.label :equipamento_id, "Equipamento", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :equipamento_id, 
-                   options_for_select(Equipamento.all.collect{ |equipamento| [(equipamento.marca.nome + " "+ equipamento.modelo.nome) + " (#{equipamento.patrimonio})", equipamento.id] }, 
+                   options_for_select(Equipamento.all.collect{ |equipamento| [(equipamento.tipo.nome + " " + equipamento.marca.nome + " "+ equipamento.modelo.nome) + " (#{equipamento.patrimonio})", equipamento.id] }, 
                    selected: @emprestimo.equipamento_id), {} , class: "form-control" %> 
     </div>
     <%= error_span(@emprestimo[:equipamento_id]) %>
