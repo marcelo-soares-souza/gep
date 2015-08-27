@@ -22,6 +22,7 @@
     </div>
     <%= error_span(@equipamento[:patrimonio]) %>
   </div>
+
   <div class="control-group">
     <%= f.label "Número de Série", :class => 'control-label' %>
     <div class="controls">
@@ -29,6 +30,7 @@
     </div>
     <%= error_span(@equipamento[:numero_serie]) %>
   </div>
+
   <div class="control-group">
     <%= f.label "Especificação", :class => 'control-label' %>
     <div class="controls">
@@ -36,12 +38,21 @@
     </div>
     <%= error_span(@equipamento[:especificacao]) %>
   </div>
+
   <div class="control-group">
     <%= f.label "Observação", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :observacao, :class => 'form-control' %>
     </div>
     <%= error_span(@equipamento[:observacao]) %>
+  </div>
+
+    <div class="control-group">
+      <%= f.label :local_retirada, "Situação", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :local_retirada, options_for_select(Equipamento.local_retiradas.collect { |s| [s[0].humanize, s[0]] }, selected: @equipamento.local_retirada), {} , class: "form-control" %> 
+      </div>
+    <%= error_span(@equipamento[:local_retirada]) %>
   </div>
 
   <br/>
