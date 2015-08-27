@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :modelos
+  resources :marcas
+  resources :tipos
   resources :pontos do
     collection do
       get 'relatorio'

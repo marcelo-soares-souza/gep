@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822202421) do
+ActiveRecord::Schema.define(version: 20150827173347) do
 
   create_table "emprestimos", force: :cascade do |t|
     t.integer  "user_id"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20150822202421) do
   add_index "equipes", ["projeto_id"], name: "index_equipes_on_projeto_id"
   add_index "equipes", ["user_id"], name: "index_equipes_on_user_id"
 
+  create_table "marcas", force: :cascade do |t|
+    t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "modelos", force: :cascade do |t|
+    t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pontos", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "data_hora"
@@ -65,6 +77,12 @@ ActiveRecord::Schema.define(version: 20150822202421) do
     t.date     "data_fim"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "tipos", force: :cascade do |t|
+    t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
