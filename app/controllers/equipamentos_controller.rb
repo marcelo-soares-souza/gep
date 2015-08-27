@@ -71,6 +71,6 @@ class EquipamentosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipamento_params
-      params.require(:equipamento).permit(:patrimonio, :numero_serie, :especificacao, :observacao, :local_retirada)
+      params.require(:equipamento).permit(:patrimonio, :numero_serie, :observacao, :local_retirada, :tipo_id, :marca_id, :modelo_id)
     end
 end

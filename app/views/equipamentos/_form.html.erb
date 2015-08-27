@@ -16,6 +16,30 @@
   <% end %>
 
   <div class="control-group">
+    <%= f.label :tipo_id, "Tipo", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :tipo_id, options_for_select(Tipo.all.collect{ |tipo| [tipo.nome, tipo.id] }, selected: @equipamento.tipo_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@equipamento[:tipo_id]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :marca_id, "Marca", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :marca_id, options_for_select(Marca.all.collect{ |marca| [marca.nome, marca.id] }, selected: @equipamento.marca_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@equipamento[:marca_id]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :modelo_id, "Modelo", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :modelo_id, options_for_select(Modelo.all.collect{ |modelo| [modelo.nome, modelo.id] }, selected: @equipamento.modelo_id), {} , class: "form-control" %> 
+    </div>
+    <%= error_span(@equipamento[:modelo_id]) %>
+  </div>
+
+  <div class="control-group">
     <%= f.label "Patrimônio", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :patrimonio, :class => 'form-control' %>
@@ -29,14 +53,6 @@
       <%= f.text_field :numero_serie, :class => 'form-control' %>
     </div>
     <%= error_span(@equipamento[:numero_serie]) %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label "Especificação", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :especificacao, :class => 'form-control' %>
-    </div>
-    <%= error_span(@equipamento[:especificacao]) %>
   </div>
 
   <div class="control-group">

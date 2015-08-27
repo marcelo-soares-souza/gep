@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827175957) do
+ActiveRecord::Schema.define(version: 20150827182310) do
 
   create_table "emprestimos", force: :cascade do |t|
     t.integer  "user_id"
@@ -29,12 +29,18 @@ ActiveRecord::Schema.define(version: 20150827175957) do
   create_table "equipamentos", force: :cascade do |t|
     t.string   "patrimonio"
     t.string   "numero_serie"
-    t.string   "especificacao"
     t.text     "observacao"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "local_retirada"
+    t.integer  "tipo_id"
+    t.integer  "modelo_id"
+    t.integer  "marca_id"
   end
+
+  add_index "equipamentos", ["marca_id"], name: "index_equipamentos_on_marca_id"
+  add_index "equipamentos", ["modelo_id"], name: "index_equipamentos_on_modelo_id"
+  add_index "equipamentos", ["tipo_id"], name: "index_equipamentos_on_tipo_id"
 
   create_table "equipes", force: :cascade do |t|
     t.integer  "user_id"
