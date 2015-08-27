@@ -4,14 +4,30 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong>Tipo:</strong></dt>
+  <dd><%= @equipamento.tipo.nome %></dd>
+
+  <dt><strong>Marca:</strong></dt>
+  <dd><%= @equipamento.marca.nome %></dd>
+
+  <dt><strong>Modelo:</strong></dt>
+  <dd><%= @equipamento.modelo.nome %></dd>
+
   <dt><strong>Patrimônio:</strong></dt>
   <dd><%= @equipamento.patrimonio %></dd>
+
   <dt><strong>Número de Série:</strong></dt>
   <dd><%= @equipamento.numero_serie %></dd>
+
   <dt><strong>Observação:</strong></dt>
   <dd><%= @equipamento.observacao %></dd>
+
+  <dt><strong>Retirada:</strong></dt>
+  <dd><%= @equipamento.local_retirada %></dd>
+
   <dt><strong>Última Modificação:</strong></dt>
   <dd><%= @equipamento.updated_at %></dd>
+
 </dl>
 
 <hr/>

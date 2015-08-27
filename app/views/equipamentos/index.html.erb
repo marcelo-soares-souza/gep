@@ -13,8 +13,12 @@
   <thead>
     <tr>
       <th>#</th>
+      <th>Tipo</th>
+      <th>Marca</th>
+      <th>Modelo</th>
       <th>Patrimônio</th>
       <th>No. Série</th>
+      <th>Retirada</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -22,8 +26,12 @@
     <% @equipamentos.each do |equipamento| %>
       <tr>
         <td><%= link_to equipamento.id, equipamento_path(equipamento) %></td>
+        <td><%= equipamento.tipo.nome %></td>
+        <td><%= equipamento.marca.nome %></td>
+        <td><%= equipamento.modelo.nome %></td>
         <td><%= equipamento.patrimonio %></td>
         <td><%= equipamento.numero_serie %></td>
+        <td><%= equipamento.local_retirada %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_equipamento_path(equipamento), :class => 'btn btn-default btn-xs' %>
