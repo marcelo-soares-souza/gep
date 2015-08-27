@@ -7,3 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 admin = User.new( nome: 'Administrador', email: 'admin@localhost', password: 'admin', admin: true ).save(validate: false)
+
+tipo   = Tipo.new( nome: 'Câmera HD').save
+marca  = Marca.new( nome: 'Sony').save
+modelo = Modelo.new( nome: 'HXR-NX70U').save
+

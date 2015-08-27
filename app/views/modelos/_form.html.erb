@@ -1,0 +1,30 @@
+<%= form_for @modelo, :html => { :class => "form-horizontal modelo" } do |f| %>
+
+    <% if @modelo.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@modelo.errors.count, "error") %> encontrado(s):</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @modelo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "Nome", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'form-control' %>
+    </div>
+    <%= error_span(@modelo[:nome]) %>
+  </div>
+
+  <br/>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), modelos_path, :class => 'btn btn-default' %>
+
+<% end %>

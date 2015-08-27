@@ -13,7 +13,6 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Item</th> 
       <th>Patrimônio</th>
       <th>No. Série</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -23,7 +22,6 @@
     <% @equipamentos.each do |equipamento| %>
       <tr>
         <td><%= link_to equipamento.id, equipamento_path(equipamento) %></td>
-        <td><%= link_to equipamento.item, equipamento_path(equipamento) %></td>
         <td><%= equipamento.patrimonio %></td>
         <td><%= equipamento.numero_serie %></td>
         <td>
