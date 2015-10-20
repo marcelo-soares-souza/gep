@@ -6,6 +6,15 @@
 <dl class="dl-horizontal">
   <dt><strong>Última Modificação:</strong></dt>
   <dd><%= @marca.updated_at %></dd>
+
+  <dt><strong>Equipamentos Associados:</strong></dt>
+  <dd>
+    <% @marca.equipamento.each do |equipamento| %>
+      <%= link_to equipamento.marca.nome + " " + equipamento.modelo.nome + " (" + equipamento.patrimonio + ")", equipamento %>
+      <%= "," unless equipamento == @marca.equipamento.last %>
+    <% end %>
+  </dd>
+
 </dl>
 
 <hr/>

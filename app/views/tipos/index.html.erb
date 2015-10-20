@@ -14,6 +14,7 @@
     <tr>
       <th>#</th>
       <th>Nome</th> 
+      <th>Equipamentos</th> 
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
       <tr>
         <td><%= link_to tipo.id, tipo_path(tipo) %></td>
         <td><%= link_to tipo.nome, tipo_path(tipo) %></td>
+        <td><%= tipo.equipamento.count %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_tipo_path(tipo), :class => 'btn btn-default btn-xs' %>
