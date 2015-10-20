@@ -30,6 +30,8 @@
         <td><%= projeto.data_fim %></td>
         <td><%= projeto.users.count %></td>
         <td>
+          <%= link_to 'Adicionar Membros a Equipe', new_equipe_path, :class => 'btn btn-success btn-xs' %>
+
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_projeto_path(projeto), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
