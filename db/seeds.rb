@@ -8,63 +8,89 @@
 
 admin = User.new( nome: 'Administrador', email: 'admin@localhost', password: 'admin', admin: true ).save(validate: false)
 
+usuario = User.new( nome: 'Lucas Felipe Carvalho Oliveira', email: 'lucasfelipe250@gmail.com', cpf: '4051905144', password: '4051905144', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Luana Dias da Costa', email: 'ludias02@gmail.com', cpf: '10182114627', password: '10182114627', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Priscila Torres de Brito', email: 'priscilaaa.a@hotmail.com', cpf: '4201772136', password: '4201772136', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Ellen Carollyane Alves Furtado', email: 'ellenfurtado18@gmail.com', cpf: '4734792143', password: '4734792143', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Tâmara Rios de Sousa', email: 'tamararioss@hotmail.com', cpf: '3675375161', password: '3675375161', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Taináh Mota e Silva', email: 'tainah.ms@hotmail.com', cpf: '2857849192', password: '2857849192', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Leonardo Pimenta Brito', email: 'leonardopimentab@gmail.com', cpf: '2438759160', password: '2438759160', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Rianna Carvalho Moraes', email: 'rianna.moraes@gmail.com', cpf: '4871678130', password: '4871678130', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Mariane Sanches Leonel de Sousa', email: 'msanchesleoenl@gmail.com', cpf: '3503913190', password: '3503913190', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Camila Pinto da Silva', email: 'Camila.unb.silva@gmail.com', cpf: '4282970138', password: '4282970138', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Stelamares Menezes da Silva', email: 'stellamares12@gmail.com', cpf: '3012725148', password: '3012725148', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Sarah Pâmela Fernandes Leite', email: 'sarahpfl@gmail.com', cpf: '4287212142', password: '4287212142', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Ana Paula da Cruz Paiva', email: 'x3.anapaula@gmail.com', cpf: '3690331161', password: '3690331161', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Felipe Fernandes Costa', email: 'felipefernandes.unb@gmail.com', cpf: '3291567137', password: '3291567137', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Juliana Cunha Frazão', email: 'frazaoju@gmail.com', cpf: '3441658104', password: '3441658104', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Ana Terra Roque de Araújo', email: 'anaterra.roque@gmail.com', cpf: '1727775180', password: '1727775180', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Cássio Henrique Oliveira da Conceição', email: 'cassiohenrique28@gmail.com', cpf: '4732505198', password: '4732505198', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Alexandre Soares de Barros', email: 'alexandresb19@hotmail.com', cpf: '4035110116', password: '4035110116', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Laísa de Almeida Pereira', email: 'laysa1422@hotmail.com', cpf: '4826411502', password: '4826411502', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Andréia Alves Puttini Ramos', email: 'andreiaputtini@hotmail.com', cpf: '4271782157', password: '4271782157', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Michelle Ferreira Cordeiro', email: 'michellefcordeiro@hotmail.com', cpf: '2969045117', password: '2969045117', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'João Armando Alves', email: 'armandounb@gmail.com', cpf: '8825249845', password: '8825249845', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Carla Rayane Alves Santos', email: 'carlarayanee@gmail.com', cpf: '4716571157', password: '4716571157', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Luana Chagas Costa', email: 'luchagas18@hotmail.com', cpf: '3602556123', password: '3602556123', admin: false ).save(validate: false) 
+usuario = User.new( nome: 'Klauss Kleydmann Sabino Garcia', email: 'kleydmann25@gmail.com', cpf: '4539529170', password: '4539529170', admin: false ).save(validate: false)
+
 tipos = Tipo.create([
- { nome: "Bateria Recarregavel"},
- { nome: "Caixa de som"},
- { nome: "Câmera"},
- { nome: "Câmera Digital"},
- { nome: "Câmera HD"},
- { nome: "Câmera Profissional"},
- { nome: "Interface de Audio"},
- { nome: "Mesa de som"},
- { nome: "Microfone Package"},
- { nome: "Microfone sem fio"},
- { nome: "Notebook"},
- { nome: "Retroprojetor"},
- { nome: "Tripé"},
+ { nome: "Bateria Recarregavel" },
+ { nome: "Caixa de som" },
+ { nome: "Câmera" },
+ { nome: "Câmera Digital" },
+ { nome: "Câmera HD" },
+ { nome: "Câmera Profissional" },
+ { nome: "Interface de Audio" },
+ { nome: "Mesa de som" },
+ { nome: "Microfone Package" },
+ { nome: "Microfone sem fio" },
+ { nome: "Notebook" },
+ { nome: "Retroprojetor" },
+ { nome: "Tripé" },
  { nome: "WebCam" }
 ])
 
 modelos = Modelo.create([
- { nome: "8922"},
- { nome: "Coolpix P520"},
- { nome: "CSR2500A/USB"},
- { nome: "Cyber-Shot DSC-W510"},
- { nome: "DS126281"},
- { nome: "Fast Track Pro"},
- { nome: "GR-AX26U"},
- { nome: "GY-DV300U"},
- { nome: "H434A"},
- { nome: "HDR-XR550V"},
- { nome: "HT00"},
- { nome: "HXR-NX70U"},
- { nome: "LifeCam BX-7000"},
- { nome: "Não tem"},
- { nome: "NP405G"},
- { nome: "NP-FV100"},
- { nome: "ProBook 6465b"},
- { nome: "Sem modelo"},
- { nome: "UHF 271"},
- { nome: "UWP-D16"},
- { nome: "VPL-ES4"},
+ { nome: "8922" },
+ { nome: "Coolpix P520" },
+ { nome: "CSR2500A/USB" },
+ { nome: "Cyber-Shot DSC-W510" },
+ { nome: "DS126281" },
+ { nome: "Fast Track Pro" },
+ { nome: "GR-AX26U" },
+ { nome: "GY-DV300U" },
+ { nome: "H434A" },
+ { nome: "HDR-XR550V" },
+ { nome: "HT00" },
+ { nome: "HXR-NX70U" },
+ { nome: "LifeCam BX-7000" },
+ { nome: "Não tem" },
+ { nome: "NP405G" },
+ { nome: "NP-FV100" },
+ { nome: "ProBook 6465b" },
+ { nome: "Sem modelo" },
+ { nome: "UHF 271" },
+ { nome: "UWP-D16" },
+ { nome: "VPL-ES4" },
  { nome: "XENYX 1622FX"}
 ])
 
 marcas = Marca.create([
- { nome: "BEHRINGER"},
- { nome: "Canon"},
- { nome: "CSR"},
- { nome: "EPSON"},
- { nome: "HP"},
- { nome: "JVC"},
- { nome: "Lenovo"},
- { nome: "M-AUDIO"},
- { nome: "Microsoft"},
- { nome: "Multilaser"},
- { nome: "Não tem"},
- { nome: "NEC"},
- { nome: "Nikon"},
- { nome: "SKP Pro Audio"},
+ { nome: "BEHRINGER" },
+ { nome: "Canon" },
+ { nome: "CSR" },
+ { nome: "EPSON" },
+ { nome: "HP" },
+ { nome: "JVC" },
+ { nome: "Lenovo" },
+ { nome: "M-AUDIO" },
+ { nome: "Microsoft" },
+ { nome: "Multilaser" },
+ { nome: "Não tem" },
+ { nome: "NEC" },
+ { nome: "Nikon" },
+ { nome: "SKP Pro Audio" },
  { nome: "SONY"}
 ])
 
@@ -298,4 +324,3 @@ equipamentos = Equipamento.create([
     numero_serie: "0",
     local_retirada: :LICOSC },
 ])
-
