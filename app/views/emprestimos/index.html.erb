@@ -26,7 +26,7 @@
     <% @emprestimos.each do |emprestimo| %>
       <tr>
         <td><%= link_to emprestimo.id, emprestimo_path(emprestimo) %></td>
-        <td><%= link_to emprestimo.equipamento.item, emprestimo_path(emprestimo) %></td>
+        <td><%= link_to emprestimo.equipamento.marca.nome + " " + emprestimo.equipamento.modelo.nome + " - " + emprestimo.equipamento.patrimonio, emprestimo_path(emprestimo) %></td>
         <td><%= emprestimo.user.nome %></td>
         <td><%= emprestimo.data_inicio %></td>
         <td><%= emprestimo.data_fim %></td>

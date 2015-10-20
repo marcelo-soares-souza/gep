@@ -1,6 +1,6 @@
 <%- model_class = Equipamento -%>
 <div class="page-header">
-  <h3><%#= @equipamento.item %></h3>
+  <h3><%= @equipamento.marca.nome + " " + @equipamento.modelo.nome %></h3>
 </div>
 
 <dl class="dl-horizontal">
